@@ -3,14 +3,15 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const inquirer = require("inquirer");
-
+//const { writeFile, copyFile } = require("./utils/generate-site");
+const generatePage = require('./src/page-template.js');
+const fs = require('fs');
 const teamData = []
 
 
 //Menu Prompts
 function menuPrompt(){
-  console.log(teamData);
-    //this function returns a running of inquire.prompt(), thus returning
+  //this function returns a running of inquire.prompt(), thus returning
   // what it returns, which is a Promise
     return inquirer
     .prompt([
@@ -31,14 +32,11 @@ function menuPrompt(){
       } else if (response.menu === "Intern"){
         return internPrompts();
       } 
-    
-    })  
+        })
 }
 //get Manager"s info
 function managerPrompts() {
-  
-  
-    //this function returns a running of inquire.prompt(), thus returning
+  //this function returns a running of inquire.prompt(), thus returning
   // what it returns, which is a Promise
     return inquirer
     .prompt([
@@ -193,7 +191,7 @@ function internPrompts(){
         {
             type: "input",
             name: "name",
-            message: "What is the name of the manager?",
+            message: "What is the name of the Intern?",
             validate: nameInput => {
                 if (nameInput) {
                   return true;
@@ -206,7 +204,7 @@ function internPrompts(){
         {
             type: "input",
             name: "id",
-            message: "What is the manager's ID number?",
+            message: "What is the Intern's ID number?",
             validate: idInput => {
                 if (idInput) {
                   return true;
@@ -219,7 +217,7 @@ function internPrompts(){
         {
             type: "input",
             name: "email",
-            message: "What is the manager's email address?",
+            message: "What is the Intern's email address?",
             validate: emailInput => {
                 if (emailInput) {
                   return true;
@@ -257,48 +255,16 @@ function internPrompts(){
       menuPrompt();
     })
 }
+
+
  
 
 
+fs.writeFile('./dist/index.html', generatePage(), err => {
+  if (err) throw err;
 
-   
+  console.log('Portfolio complete! Check out index.html to see the output!');
+});
+
 
 managerPrompts();
-
-// {
-//     inquirer
-//     .prompt({
-        
-//     })
-//     //destructure name from the prompt object
-//     //using arrow key to bc of lexical scope needed for "this" to refer to object
-//     .then(({ name }) =>{
-//         this.employee = new Employee(name);
-// //test object creation
-// //console.log(this.employee);            
-//     })
-// }    
-
-//  getID = function(){
-//     inquirer
-//     .prompt()
-//     //destructure id from the prompt object
-//     //using arrow key to bc of lexical scope needed for "this" to refer to object
-//     .then(({ id }) =>{
-//         this.employee = new Employee(id);
-// //test object creation
-// console.log(this.employee);            
-//     })
-// }
-
-// getEmail = function(){
-//     inquirer
-//     .prompt()
-//     //destructure id from the prompt object
-//     //using arrow key to bc of lexical scope needed for "this" to refer to object
-//     .then(({ email }) =>{
-//         this.employee = new Employee(email);
-// //test object creation
-// console.log(this.employee);            
-//     })
-// }
