@@ -9,6 +9,7 @@ const teamData = []
 
 //Menu Prompts
 function menuPrompt(){
+  console.log(teamData);
     //this function returns a running of inquire.prompt(), thus returning
   // what it returns, which is a Promise
     return inquirer
@@ -24,11 +25,11 @@ function menuPrompt(){
             ]
         }
     ])
-    .then(answers => {
-      if (answers === "Engineer"){
-        engineerPrompts();
-      } else if (answers === "Intern"){
-        internPrompts();
+    .then(response => {
+      if (response.menu === "Engineer"){
+        return engineerPrompts();
+      } else if (response.menu === "Intern"){
+        return internPrompts();
       } 
     
     })  
@@ -101,7 +102,7 @@ function managerPrompts() {
       managerData.name,
       managerData.id,
       managerData.email,
-      managerData.office)
+      managerData.office);
       //adds newManager object to the teamData array
       teamData.push(newManager);
       //calls the menuPrompt function
@@ -175,7 +176,7 @@ function engineerPrompts(){
       engineerData.name,
       engineerData.id,
       engineerData.email,
-      engineerData.office)
+      engineerData.github)
       //adds newEngineer object to the teamData array
       teamData.push(newEngineer);
       //calls the menuPrompt function
@@ -249,7 +250,7 @@ function internPrompts(){
       internData.name,
       internData.id,
       internData.email,
-      internData.office)
+      internData.school)
       //adds newIntern object to the teamData array
       teamData.push(newIntern);
       //calls the menuPrompt function
