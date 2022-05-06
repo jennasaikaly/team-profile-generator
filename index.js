@@ -4,9 +4,9 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const inquirer = require("inquirer");
 //const { writeFile, copyFile } = require("./utils/generate-site");
-const generatePage = require('./src/page-template.js');
-const fs = require('fs');
-const teamData = []
+//const generatePage = require('./src/page-template.js');
+//const fs = require('fs');
+const teamData = [];
 
 
 //Menu Prompts
@@ -31,7 +31,9 @@ function menuPrompt(){
         return engineerPrompts();
       } else if (response.menu === "Intern"){
         return internPrompts();
-      } 
+      } else 
+     
+       return console.log(teamData);
         })
 }
 //get Manager"s info
@@ -260,11 +262,11 @@ function internPrompts(){
  
 
 
-fs.writeFile('./dist/index.html', generatePage(), err => {
-  if (err) throw err;
+// fs.writeFile('./dist/index.html', generatePage(), err => {
+//   if (err) throw err;
 
-  console.log('Portfolio complete! Check out index.html to see the output!');
-});
+//   console.log('Portfolio complete! Check out index.html to see the output!');
+// });
 
 
 managerPrompts();

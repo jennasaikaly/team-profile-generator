@@ -1,3 +1,5 @@
+//COPIED CODE FROM MODULE (not currently in use)
+
 const fs = require('fs');
 
 const writeFile = fileContent => {
@@ -34,6 +36,7 @@ const writeFile = fileContent => {
             });
           });
       });
+      
   };
 
   module.exports = { writeFile, copyFile };
