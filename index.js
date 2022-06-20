@@ -1,12 +1,15 @@
+const fs = require('fs');
+const generatePage = require('./src/page-template.js');
+const inquirer = require("inquirer");
+
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const inquirer = require("inquirer");
-//const { writeFile, copyFile } = require("./utils/generate-site");
-//const generatePage = require('./src/page-template.js');
-//const fs = require('fs');
+
 const teamData = [];
+// const teamProfileDataArgs = process.argv.slice(2);
+// const [name, id, email, role, github, school, office] = teamProfileDataArgs;
 
 
 //Menu Prompts
@@ -31,13 +34,21 @@ function menuPrompt(){
         return engineerPrompts();
       } else if (response.menu === "Intern"){
         return internPrompts();
-      } else 
-     
-       return console.log(teamData);
-        })
-}
-//get Manager"s info
-function managerPrompts() {
+      } else {
+        const pageHTML = generatePage(teamData);
+        fs.writeFile('./index.html', pageHTML, err => {
+            if (err) throw new Error(err);
+      
+            console.log('Page created! Check out index.html in this directory to see it!');
+          });
+        
+      }
+    })
+
+  };
+      
+      //get Manager"s info
+function managerPrompt() {
   //this function returns a running of inquire.prompt(), thus returning
   // what it returns, which is a Promise
     return inquirer
@@ -259,14 +270,23 @@ function internPrompts(){
 }
 
 
- 
+// const writeFile = teamData => {
+//   return new Promise((resolve, reject) => {
+//     fs.writeFile('index.html', generatePage(teamData), err => {
+//          // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
+//          if (err) {
+//           reject(err);
+//           // return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
+//           return;
+//         }
+  
+//         // if everything went well, resolve the Promise and send the successful data to the `.then()` method
+//         resolve({
+//           ok: true,
+//           message: 'File created!'
+//         });
+//       });
+//     });
+//   };
 
-
-// fs.writeFile('./dist/index.html', generatePage(), err => {
-//   if (err) throw err;
-
-//   console.log('Portfolio complete! Check out index.html to see the output!');
-// });
-
-
-managerPrompts();
+  managerPrompt();

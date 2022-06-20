@@ -1,5 +1,6 @@
 
-const generatePage = (name, id, email, role, github, school, office) => {
+module.exports = teamData => {
+  console.log(teamData);
   return `
   <!DOCTYPE html> 
   <html lang="en"> 
@@ -11,13 +12,8 @@ const generatePage = (name, id, email, role, github, school, office) => {
   </head>
 
   <body>
-    <h1>${name}</h1>
-    <h1>${id}</h1>
-    <h1>${email}</h1>
-    <h1>${role}</h1>
-    <h1><a href="https://github.com/${github}">Github</a></h1>
-    <h1>${school}</h1>
-    <h1>${office}</h1>
+   
+ 
    
   </body>
   </html>
@@ -26,8 +22,8 @@ const generatePage = (name, id, email, role, github, school, office) => {
 
 
   //MOSTLY COPIED CODE FROM MODULE (not currently in use)
-  // const generatePage = (templateData) => {
-  //   console.log(templateData);
+  // const generatePage = (teamData) => {
+  //   console.log(teamData);
   //    return `
   //    <!DOCTYPE html> 
   //    <html lang="en"> 
@@ -59,4 +55,3 @@ const generatePage = (name, id, email, role, github, school, office) => {
   //    `;
   //  };
 
-  module.exports = generatePage;
