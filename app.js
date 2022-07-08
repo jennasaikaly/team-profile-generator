@@ -10,21 +10,10 @@ const Manager = require("./lib/Manager");
 
 
 const teamData = [];
-// const teamProfileDataArgs = process.argv.slice(2);
-// const [name, id, email, role, github, school, office] = teamProfileDataArgs;
-
-// const mockData = {
-//   name: 'Saikaly',
-//   id: '01',
-//   email: 'sakaly@gmail.com',
-//   office: '7'
-// }
 
 //Menu Prompts
 function menuPrompt(){
-  //this function returns a running of inquire.prompt(), thus returning
-  // what it returns, which is a Promise
-    return inquirer
+     return inquirer
     .prompt([
         {
             type: "list",
@@ -57,8 +46,6 @@ function menuPrompt(){
       
       //get Manager"s info
 function managerPrompt() {
-  //this function returns a running of inquire.prompt(), thus returning
-  // what it returns, which is a Promise
     return inquirer
     .prompt([
         {
@@ -131,8 +118,6 @@ function managerPrompt() {
 
 //get Engineer's info
 function engineerPrompts(){
-    //this function returns a running of inquire.prompt(), thus returning
-  // what it returns, which is a Promise
     return inquirer
     .prompt([
         {
@@ -205,8 +190,6 @@ function engineerPrompts(){
   
 //get Intern's info
 function internPrompts(){
-    //this function returns a running of inquire.prompt(), thus returning
-  // what it returns, which is a Promise
     return inquirer
     .prompt([
         {
@@ -276,26 +259,5 @@ function internPrompts(){
       menuPrompt();
     })
 }
-
-
-
-// const writeFile = teamData => {
-//   return new Promise((resolve, reject) => {
-//     fs.writeFile('index.html', generatePage(teamData), err => {
-//          // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
-//          if (err) {
-//           reject(err);
-//           // return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
-//           return;
-//         }
-  
-//         // if everything went well, resolve the Promise and send the successful data to the `.then()` method
-//         resolve({
-//           ok: true,
-//           message: 'File created!'
-//         });
-//       });
-//     });
-//   };
 
   managerPrompt();

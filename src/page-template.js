@@ -1,76 +1,46 @@
-
-
 const generateManager = teamData => {
   return `
-    <section class="my-3" id="portfolio">
-      <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
-      <div class="flex-row justify-space-between">
-      <div>
-  <h1>${teamData[i].name}</h1>
-  <p>Manager</p>
-  <p>${teamData[i].id}</p>
-  <p>${teamData[i].email}</p>
-  <p>${teamData[i].office}</p>
-    
-        <!-- Leaving this empty as we'll dynamically insert project HTML here -->
-      </div>
-    </section>
-  `;
+   <p>${teamData.office}</p>
+      `;
 };
+
 const generateEngineer = teamData => {
   return `
-    <section class="my-3" id="portfolio">
-      <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
-      <div class="flex-row justify-space-between">
-      <div>
-
-
-    <h1>${teamData[i].name}</h1>
-  <p>Engineer</p>
-  <p>${teamData[i].id}</p>
-  <p>${teamData[i].email}</p>
-  <p>${teamData[i].github}</p>
-
- 
-        <!-- Leaving this empty as we'll dynamically insert project HTML here -->
-      </div>
-    </section>
+    <h2><a href="https://github.com/${teamData.github}">Github</a></h2>
   `;
 };
+
 const generateIntern = teamData => {
   return `
-    <section class="my-3" id="portfolio">
-      <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
-      <div class="flex-row justify-space-between">
-      <div>
-
-  <h1>${teamData[i].name}</h1>
-  <p>Intern</p>
-  <p>${teamData[i].id}</p>
-  <p>${teamData[i].email}</p>
-  <p>${teamData[i].school}</p>
-  
-
-        <!-- Leaving this empty as we'll dynamically insert project HTML here -->
-      </div>
-    </section>
+    <p>${teamData.school}</p>
   `;
 };
 
 const generateEmployee = teamData => {
 
-  const employeeHtmlArr = teamData.map(({ name, role, id, email }) => {
+  const employeeHtmlArr = teamData.map((member) => {
+    var memberPosition;
+    if (member.getRole() === "Manager"){
+      memberPosition = generateManager(member);
+    } else if (member.getRole() === "Engineer"){
+      memberPosition = generateEngineer(member);
+    } else {
+      memberPosition = generateIntern(member);
+    }
+    
     return `
     <section class="my-3" id="profile">
       <div class="card flex-row justify-space-between">
       <div class = "card-header">
-        <h1 class="text-dark bg-primary p-2 display-inline-block">${name}</h1>
-        <h3 class="profile-role text-light">${role}</h3>
+        <h1 class="text-dark bg-primary p-2 display-inline-block">${member.getName()}</h1>
+        <h3 class="profile-role text-light">${member.getRole()}</h3>
       </div>
       <div class = "card-body">
-        <p>${id}</p>
-        <a href="mailto:${email}">Email</a>
+        <p>${member.getId()}</p>
+        <a href="mailto:${member.getEmail()}">Email</a>
+        ${memberPosition}
       </div>
+
     </section>
     `;
   });
@@ -85,20 +55,6 @@ const generateEmployee = teamData => {
 };
 
 module.exports = teamData => {
-
-
-  // destructure projects and about data from templateData based on their property key names
-  //   const { name, role, id, email, ...special } = teamData;
-
-  // const special = {
-  //    office: teamData[i].office,
-  //    school: teamData[i].school,
-  //    github: teamData[i].github
-  // };
-
-  //  console.log(teamData);
-
-
   return `
   <!DOCTYPE html> 
   <html lang="en"> 
@@ -133,5 +89,3 @@ module.exports = teamData => {
   </html>
   `;
 };
-//  <h1>${teamData.name}</h1>
-  //   <h2><a href="https://github.com/${teamData.github}">Github</a></h2>
