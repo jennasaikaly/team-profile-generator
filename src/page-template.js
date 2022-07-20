@@ -37,8 +37,8 @@ const generateEmployee = teamData => {
    
       <div class="profile-container">
         <div class = "profile-header">
-          <h2 class="text-dark bg-primary p-2 display-inline-block">${member.getName()}</h1>
-          <h3 class="profile-role text-light">${member.getRole()}</h3>
+          <h2 >${member.getName()}</h1>
+          <h3 class="profile-role">${member.getRole()}</h3>
         </div>
         <div class = "profile-body">
           <p> <b>ID:</b> ${member.getId()}</p></br>
@@ -50,7 +50,7 @@ const generateEmployee = teamData => {
   });
 
   return `
-  <section class="flex-row justify-space-between">
+  <section class="flex-row">
       ${employeeHtmlArr.join('')}
   </section>
 `;
