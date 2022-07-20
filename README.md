@@ -25,7 +25,7 @@
 
   ## Links
 
-  <a href="https://drive.google.com/file/d/14vdFCUW4xdtDQipZi7P6apZkckMxgNBy/view">Walkthrough Video Link</a>
+  <a href="https://drive.google.com/file/d/14vdFCUW4xdtDQipZi7P6apZkckMxgNBy/view" target=”_blank”>Walkthrough Video Link</a>
 
   ## Tests
 
