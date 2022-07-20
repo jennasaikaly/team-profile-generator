@@ -2,7 +2,7 @@
   "name": "team-profile-generator",
   "version": "1.0.0",
   "description": "This is the challenge for Module 10 (Object-Oriented Programming).",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "lib": "lib"
   },

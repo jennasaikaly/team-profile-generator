@@ -1,6 +1,7 @@
 const fs = require('fs');
 const generatePage = require('./src/page-template.js');
 const inquirer = require("inquirer");
+// const { writeFile, copyFile, writeFileResponse } = require('./utils/generate-site.js');
 
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
@@ -32,17 +33,20 @@ function menuPrompt(){
       } else if (response.menu === "Intern"){
         return internPrompts();
       } else {
-        const pageHTML = generatePage(teamData);
-        fs.writeFile('./index.html', pageHTML, err => {
-            if (err) throw new Error(err);
-      
-            console.log('Page created! Check out index.html in this directory to see it!');
-          });
+                const pageHTML = generatePage(teamData);
+        // generatePage(teamData)
         
-      }
-    })
-
+        fs.writeFile('./dist/index.html', pageHTML, err => {
+            if (err) throw new Error(err);
+          console.log('Page created! Check out index.html in this directory to see it!');
+          });
+        fs.copyFile('./src/style.css', './dist/style.css',err => {
+          if (err) throw new Error(err);
+        console.log('Style sheet copied successfully!');
+        })
   };
+});
+}
       
       //get Manager"s info
 function managerPrompt() {
@@ -260,4 +264,5 @@ function internPrompts(){
     })
 }
 
-  managerPrompt();
+  managerPrompt()
+  

@@ -1,0 +1,90 @@
+:root {
+    --primary: #54BAB9;
+    --secondary: #daeaef;
+    --tertiary: #18978F;
+    --light: #F7ECDE;
+    --dark: #272f32;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+p {
+    display: inline;
+}
+main{
+    margin: 50px;
+    display: flex;
+}
+header {
+    background-color: var(--tertiary);
+    padding: 5px;
+    text-align: center;
+}
+.title {
+    font-weight:bolder;
+    display: inline;
+}
+.flex-row {
+    display:flex; 
+    flex-direction: row;
+    justify-content: center; 
+    flex-wrap: wrap;
+}
+.profile-container {
+    width: 31%;
+    border: black solid 2px;
+    margin: 5px;
+    background-color: var(--tertiary);
+    }
+
+.profile-header {
+    color: var(--dark);
+    background-color: var(--primary);
+    margin: 0px;
+    padding: 5px 2px 5px 2px;
+    text-align: center;
+}
+h2 {
+    margin: 0px;
+}
+.profile-role {
+    margin: 0px;
+    text-align: center;
+    /* background-color: var(--secondary); */
+    
+}
+
+.profile-body {
+    margin: 15px;
+    border: black solid 1px;
+    background-color: var(--secondary); 
+    padding: 5px;
+}
+
+p {
+    margin: 5px;
+    padding: 2px;
+}
+
+.email, .github{
+    margin: 5px;
+    text-decoration: none;
+    color: var(--dark);
+    }
+
+.email:hover, .github:hover{
+    color: var(--tertiary);
+}
+
+.school, .github, .office{
+    display: inline;
+
+}
+
+footer {
+    text-align: center;
+}
