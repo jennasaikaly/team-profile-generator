@@ -11,7 +11,7 @@
 
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Contributing](#contributing)
+  * [Links](#links)
   * [Tests](#tests)
    
   
@@ -23,9 +23,9 @@
 
   Once the user runs the application, they will be prompted to create a profile for the Manager.  Then, they will have options to either create a profile for an Engineer, an Intern, or to finish.  Once they finish, the application will create an HTML file that will display the different Employee profiles that were created.
 
-  ## Contributing
+  ## Links
 
-  There are no contribution guidelines.
+  <a href="https://drive.google.com/file/d/14vdFCUW4xdtDQipZi7P6apZkckMxgNBy/view">Walkthrough Video Link</a>
 
   ## Tests
 
